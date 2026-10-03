@@ -84,7 +84,6 @@ public class HudEditorScreen extends Screen {
             int w = (int) (dragging.getWidth() * dragging.scale);
             int h = (int) (dragging.getHeight() * dragging.scale);
 
-            // snap: screen center + other elements' edges/centers
             List<Integer> vx = new ArrayList<>();
             List<Integer> hx = new ArrayList<>();
             vx.add(this.width / 2); hx.add(this.height / 2);
@@ -108,16 +107,16 @@ public class HudEditorScreen extends Screen {
     }
 
     @Override
-    public boolean mouseScrolled(double mx, double my, double horizontal, double vertical) {
+    public boolean mouseScrolled(double mx, double my, double amount) {
         List<HudElement> vis = visible();
         for (int i = vis.size() - 1; i >= 0; i--) {
             HudElement e = vis.get(i);
             if (e.contains(mx, my) || e == selected) {
-                e.scale = (float) Math.max(0.5, Math.min(3.0, e.scale + (vertical > 0 ? 0.12 : -0.12)));
+                e.scale = (float) Math.max(0.5, Math.min(3.0, e.scale + (amount > 0 ? 0.12 : -0.12)));
                 return true;
             }
         }
-        return super.mouseScrolled(mx, my, horizontal, vertical);
+        return super.mouseScrolled(mx, my, amount);
     }
 
     @Override
