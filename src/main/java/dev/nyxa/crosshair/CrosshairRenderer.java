@@ -14,14 +14,14 @@ public final class CrosshairRenderer {
         if (client.player == null) return;
 
         int[][] map = CrosshairStyle.byName(m.style.getValue()).bitmap;
-        int px = Math.max(1, (int) m.size.getValue());
+        int px = Math.max(1, m.size.getValue().intValue());
         int w = map.length, h = map[0].length;
         int cx = client.getWindow().getScaledWidth() / 2;
         int cy = client.getWindow().getScaledHeight() / 2;
 
         int fill = m.rainbow.getValue()
                 ? (0xFF000000 | Colors.rainbow(3f, 0.8f, 1f))
-                : Colors.argb(255, (int) m.red.getValue(), (int) m.green.getValue(), (int) m.blue.getValue());
+                : Colors.argb(255, m.red.getValue().intValue(), m.green.getValue().intValue(), m.blue.getValue().intValue());
         int outline = Colors.argb(210, 0, 0, 0);
 
         int x0 = cx - (w * px) / 2;
