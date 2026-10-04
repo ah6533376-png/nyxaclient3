@@ -44,4 +44,8 @@ public class ModuleManager {
             CpsCounter.prune();
         }
     }
+
+    public void render(MinecraftClient client, float delta) {
+        for (Module m : modules) if (m.isEnabled()) m.render(client, delta);
+    }
 }
