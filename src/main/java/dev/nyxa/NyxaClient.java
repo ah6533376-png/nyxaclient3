@@ -51,6 +51,7 @@ public class NyxaClient implements ClientModInitializer {
         HudRenderCallback.EVENT.register((context, tickDelta) -> {
             MinecraftClient client = MinecraftClient.getInstance();
             if (client.player == null) return;
+            moduleManager.render(client, tickDelta);
             hudManager.render(context, tickDelta);
             CrosshairRenderer.render(context);
         });
