@@ -15,6 +15,8 @@ public abstract class Module {
 
     /** toggle animation progress 0..1, driven by the ClickGUI each frame */
     public float anim;
+    /** settings expansion animation 0..1 */
+    public float expandAnim;
 
     protected Module(String name, String description, Category category) {
         this.name = name;
@@ -42,4 +44,5 @@ public abstract class Module {
     public void onEnable() {}
     public void onDisable() {}
     public void tick(MinecraftClient client) {}
+    public void render(MinecraftClient client, float delta) {}
 }
